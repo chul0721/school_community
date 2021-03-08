@@ -9,7 +9,7 @@ router(app)
 
 let boardDB, userDB;
 let port = 5000;
-const DBClient = new MongoDB.MongoClient(`mongodb+srv://admin:${process.env.DB_PW}@cluster0.quy8v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {
+const DBClient = new MongoDB.MongoClient(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PW}@cluster0.quy8v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -17,12 +17,12 @@ const DBClient = new MongoDB.MongoClient(`mongodb+srv://admin:${process.env.DB_P
 DBClient.connect().then(() => {
     boardDB = DBClient.db('board').collection('main');
     userDB = DBClient.db('user').collection('main');
-    console.log('Connected to DataBase')
+    console.log('\x1b[36m%s\x1b[34m%s\x1b[0m', '[DB]',' Connected to DataBase');
 });
 
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
 app.listen(port, () => {
-    console.log(`Server on : ${port}`);
+    console.log('\x1b[36m%s\x1b[34m%s\x1b[0m', '[Server]',` Server on : ${port}`);
 })

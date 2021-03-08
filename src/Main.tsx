@@ -1,14 +1,16 @@
 import React from 'react';
 import Header from './components/Header'
+import AppRouter from "../router/Routes"
 
-class App extends React.Component {
+class Main extends React.Component {
   render() {
     return (
       <div>
         <Header />
+        <AppRouter isLoggedIn={true} />
       </div>
     );  
   }
 }
 
-export default App;
+export default Main;
