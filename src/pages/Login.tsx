@@ -35,20 +35,36 @@ export default class Login extends React.Component {
     render() {
         return(
             <div>
+                <div className="login-box">
+                <h2>Login</h2>
                 <form onSubmit={this.handleSubmit}>
+                    <div className="user-box">
                     <input
                         type="text"
                         name="userid"
-                        placeholder="ID를 입력하세요."
                         onChange={this.handleChangeId}
+                        required
                     />
+                    <label>ID</label>
+                    </div>
+                    <div className="user-box">
                     <input
-                        type="text"
+                        type="password"
                         name="passwd"
-                        placeholder="비밀번호를 입력하세요."
                         onChange={this.handleChangePw}
+                        required
                     />
+                    <label>PW</label>
+                    </div>
+                    <button type="submit" className="button">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Submit
+                    </button>
                 </form>
+                </div>
             </div>
         )
     }
