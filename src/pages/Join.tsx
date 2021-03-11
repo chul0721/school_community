@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 
 export default class Join extends React.Component {
     state = {
@@ -9,24 +8,24 @@ export default class Join extends React.Component {
         name: ''
     }
     
-    handleChangeId = (event:any):any => {
+    handleChangeId = (event:any) => {
         this.setState({ id: event.target.value });
     }
-    handleChangePw = (event:any):any => {
+    handleChangePw = (event:any) => {
         this.setState({ pw: event.target.value });
     }
-    handleChangePwConfirm = (event:any):any => {
+    handleChangePwConfirm = (event:any) => {
         this.setState({ pwcheck: event.target.value });
     }
-    handleChangeName = (event:any):any => {
+    handleChangeName = (event:any) => {
         this.setState({ name: event.target.value });
     }
 
-    formSubmit = (event:any):any => {
-        if((this.state.id == '') || (this.state.pw == '') || (this.state.pwcheck == '') || (this.state.name == '')){
+    formSubmit = (event:any) => {
+        if((this.state.id === '') || (this.state.pw === '') || (this.state.pwcheck === '') || (this.state.name === '')){
             return alert("모든 양식을 채워주세요.")
         }
-        if(!(this.state.pwcheck == this.state.pw)){
+        if(!(this.state.pwcheck === this.state.pw)){
             return alert("비밀번호가 일치하지 않습니다.")
         }
 
@@ -40,43 +39,69 @@ export default class Join extends React.Component {
     
         console.log(user)
     
-        axios.post('http://localhost:5000/api/join', user)
-          .then(res => {
-            console.log(res);
-            console.log(res.data);
-          })
+        fetch('http://chul0721.iptime.org:3001/api/join', {
+            method: 'POST',
+            body: JSON.stringify(user)
+        }).then((res) => {
+            console.log(res)
+        })
     }
 
     render() {
         return(
             <div>
+                <div className="login-box">
+                <h2>회원가입</h2>
                 <form onSubmit={this.formSubmit}>
-                    <input
-                        type="text"
-                        name="id"
-                        placeholder="ID를 입력하세요."
-                        onChange={this.handleChangeId}
-                    />
-                    <input
-                        type="text"
-                        name="pw"
-                        placeholder="비밀번호를 입력하세요."
-                        onChange={this.handleChangePw}
-                    />
-                    <input
-                        type="text"
-                        name="pwcheck"
-                        placeholder="비밀번호를 확인하세요."
-                        onChange={this.handleChangePwConfirm}
-                    />
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="사용자 이름을 입력하세요."
-                        onChange={this.handleChangeName}
-                    />
-                    <input type="submit" value="회원가입" />
+                    <div className="user-box">
+                        <input
+                            type="text"
+                            name="id"
+                            onChange={this.handleChangeId}
+                            required
+                        />
+                        <label>아이디</label>
+                    </div>
+
+                    <div className="user-box">
+                        <input
+                            type="password"
+                            name="pw"
+                            onChange={this.handleChangePw}
+                            required
+                        />
+                        <label>비밀번호</label>
+                    </div>
+
+                    <div className="user-box">
+                        <input
+                            type="password"
+                            name="pwcheck"
+                            onChange={this.handleChangePwConfirm}
+                            required
+                          />
+                        <label>비밀번호 확인</label>
+                    </div>
+
+                    <div className="user-box">
+                        <input
+                            type="text"
+                            name="name"
+                            onChange={this.handleChangeName}
+                            required
+                        />
+                        <label>닉네임</label>
+                    </div>
+
+                    <button type="submit" className="button">
+                        Submit
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </form>
+                </div>
             </div>
         )
     }
