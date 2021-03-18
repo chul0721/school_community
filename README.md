@@ -4,6 +4,7 @@ yarn
 ```
 ```
 # add .env file (needs "DB_PW and DB_USER" value)
+# add semantic folder
 ```
 ```
 yarn start # It starts react
