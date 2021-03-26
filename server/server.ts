@@ -5,11 +5,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 const app = express();
 
-<<<<<<< HEAD:server/server.ts
 let boardDB:any, userDB:any;
-=======
-let boardDB, userDB;
->>>>>>> 2b5e8cb148a51f94373340a5c519a65c05eab297:server.ts
 let port = 3001;
 const DBClient = new MongoDB.MongoClient(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PW}@cluster0.quy8v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
@@ -23,14 +19,9 @@ DBClient.connect().then(() => {
 });
 
 app.post('/api/join', async (req:any, res:any, next:any) => {
-<<<<<<< HEAD:server/server.ts
     // await userDB.findeOne()
     console.log(req.body)
     res.end('asdf')
-=======
-    boardDB.findeOne
-    return 10
->>>>>>> 2b5e8cb148a51f94373340a5c519a65c05eab297:server.ts
 })
 
 app.set('view engine', 'ejs');
