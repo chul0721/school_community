@@ -7,13 +7,6 @@
   "author": "Jack Lukic <jack@semantic-ui.com>",
   "license": "MIT",
   "main": "semantic.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Semantic-Org/Semantic-UI-CSS.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Semantic-Org/Semantic-UI/issues"
-  },
   "dependencies": {
     "jquery": "x.*"
   }

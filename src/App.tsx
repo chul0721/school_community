@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/Header'
+import Footer from './components/Footer'
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,6 +27,7 @@ class App extends React.Component {
 
             <Route path="/">
               <Header />
+              <Footer />
             </Route>
 
           </Switch>

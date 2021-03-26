@@ -1,0 +1,35 @@
+.Footer {
+    border-top: black solid 1px;
+    position : absolute;
+    bottom : 0;
+    padding: 50px;
+    width: 100%;
+    background: black;
+    color: white;
+}
+
+.copyright {
+    font-size: 13px;
+    position : absolute;
+    bottom: 20px;
+    color: lightyellow;
+    padding-left: 20px;
+}
+
+.me {
+    text-decoration: none;
+    color: rgba(58, 224, 169, 0.562);
+}
+
+.me:hover {
+    color: white;
+}
+
+.source {
+    text-decoration: none;
+    color: rgba(150, 180, 243, 0.562);
+}
+
+.source:hover {
+    color: white;
+}

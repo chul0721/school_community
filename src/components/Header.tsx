@@ -9,7 +9,7 @@ class Header extends React.Component {
       <div className="navbar">
         <span className="nav_name">
           <a href="/">
-            2학년 5반 커뮤니티
+            백현중 커뮤니티
           </a>
         </span>
         <span className="glow-on-hover">
