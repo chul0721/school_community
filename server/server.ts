@@ -24,6 +24,12 @@ app.post('/api/join', async (req:any, res:any, next:any) => {
     res.end('asdf')
 })
 
+app.post('/api/login', async (req:any, res:any, next:any) => {
+    // await userDB.findeOne()
+    console.log(req.body)
+    res.end('asdf')
+})
+
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 

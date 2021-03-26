@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 
 export default class Login extends React.Component {
     state = {
@@ -25,10 +24,15 @@ export default class Login extends React.Component {
     
         console.log(user)
     
-        axios.post('http://localhost:5000/api/login', user)
-          .then(res => {
-            console.log(res);
-            console.log(res.data);
+        fetch('http://chul0721.iptime.org:3001/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            body: JSON.stringify(user)
+        }).then((res) => {
+            console.log(res)
         })
     }
 

@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Login from './pages/Login'
 import Join from './pages/Join'
+import Board from './pages/Board'
 import './styles/Form.css'
 
 class App extends React.Component {
@@ -28,6 +29,10 @@ class App extends React.Component {
             <Route path="/">
               <Header />
               <Footer />
+            </Route>
+
+            <Route path="/board">
+              <Board />
             </Route>
 
           </Switch>
