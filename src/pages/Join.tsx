@@ -41,10 +41,13 @@ export default class Join extends React.Component {
     
         fetch('http://chul0721.iptime.org:3001/api/join', {
             method: 'POST',
+<<<<<<< HEAD
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
             },
+=======
+>>>>>>> 2b5e8cb148a51f94373340a5c519a65c05eab297
             body: JSON.stringify(user)
         }).then((res) => {
             console.log(res)

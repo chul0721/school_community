@@ -1,6 +1,9 @@
 import React from 'react';
 import Header from './components/Header'
+<<<<<<< HEAD
 import Footer from './components/Footer'
+=======
+>>>>>>> 2b5e8cb148a51f94373340a5c519a65c05eab297
 import {
   BrowserRouter as Router,
   Switch,
@@ -27,7 +30,10 @@ class App extends React.Component {
 
             <Route path="/">
               <Header />
+<<<<<<< HEAD
               <Footer />
+=======
+>>>>>>> 2b5e8cb148a51f94373340a5c519a65c05eab297
             </Route>
 
           </Switch>
