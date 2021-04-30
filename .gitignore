@@ -23,7 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 .env
-<<<<<<< HEAD
+
 /semantic
-=======
->>>>>>> 2b5e8cb148a51f94373340a5c519a65c05eab297
