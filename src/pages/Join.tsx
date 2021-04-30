@@ -1,7 +1,8 @@
-import React from 'react';
+import React from 'react'
+import JoinState from '../interface/JoinState'
 
 export default class Join extends React.Component {
-    state = {
+    state: JoinState = {
         id: '',
         pw: '',
         pwcheck: '',
@@ -39,10 +40,9 @@ export default class Join extends React.Component {
     
         console.log(user)
     
-        fetch('http://chul0721.iptime.org:3001/api/join', {
+        fetch('http://localhost:3001/api/join', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
             },
             body: JSON.stringify(user)

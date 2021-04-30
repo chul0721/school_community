@@ -1,9 +1,10 @@
 import React from 'react';
+import LoginState from '../interface/LoginState'
 
 export default class Login extends React.Component {
-    state = {
+    state: LoginState = {
         userid: '',
-        passwd: '',
+        passwd: ''
     }
 
     handleChangeId = (event:any):any => {
@@ -24,12 +25,8 @@ export default class Login extends React.Component {
     
         console.log(user)
     
-        fetch('http://chul0721.iptime.org:3001/api/login', {
+        fetch('http://localhost:3001/api/login', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
             body: JSON.stringify(user)
         }).then((res) => {
             console.log(res)

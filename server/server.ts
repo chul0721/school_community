@@ -1,37 +1,17 @@
-import express from 'express';
-import * as MongoDB from 'mongodb';
-import * as dotenv from 'dotenv';
+import express from 'express'
+import dotenv from 'dotenv'
+import router from './routes/Router'
+import cors from 'cors'
 
-dotenv.config();
-const app = express();
-
-let boardDB:any, userDB:any;
-let port = 3001;
-const DBClient = new MongoDB.MongoClient(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PW}@cluster0.quy8v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
-
-DBClient.connect().then(() => {
-    boardDB = DBClient.db('board').collection('main');
-    userDB = DBClient.db('user').collection('main');
-    console.log('\x1b[36m%s\x1b[34m%s\x1b[0m', '[DB]',' Connected to DataBase');
-});
-
-app.post('/api/join', async (req:any, res:any, next:any) => {
-    // await userDB.findeOne()
-    console.log(req.body)
-    res.end('asdf')
-})
-
-app.post('/api/login', async (req:any, res:any, next:any) => {
-    // await userDB.findeOne()
-    console.log(req.body)
-    res.end('asdf')
-})
-
-app.set('view engine', 'ejs');
-app.engine('html', require('ejs').renderFile);
+dotenv.config({path: '../.env'})
+const app = express()
+const port = 3001
+app.use(cors())
+app.use(router)
+app.use(express.json())
+app.use(express.urlencoded({
+    extended: true
+}))
 
 app.listen(port, () => {
     console.log('\x1b[36m%s\x1b[34m%s\x1b[0m', '[Server]',` Server on : ${port}`);
