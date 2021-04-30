@@ -27,6 +27,9 @@ export default class Login extends React.Component {
     
         fetch('http://localhost:3001/api/login', {
             method: 'POST',
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            },
             body: JSON.stringify(user)
         }).then((res) => {
             console.log(res)
