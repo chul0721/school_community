@@ -1,15 +1,16 @@
 import React from 'react'
 import JoinState from '../interface/JoinState'
+import { passwordStrength } from 'check-password-strength'
 
 export default class Join extends React.Component {
     state: JoinState = {
         id: '',
         pw: '',
         pwcheck: '',
-        name: ''
+        name: '',
     }
-    
-    handleChangeId = (event:any) => {
+
+    handleChangeID = (event:any) => {
         this.setState({ id: event.target.value });
     }
     handleChangePw = (event:any) => {
@@ -29,25 +30,26 @@ export default class Join extends React.Component {
         if(!(this.state.pwcheck === this.state.pw)){
             return alert("비밀번호가 일치하지 않습니다.")
         }
+        if((passwordStrength(`${this.state.pw}`).value !== 'Medium') || (passwordStrength(`${this.state.pw}`).value !== 'Strong')){
+            return alert("비밀번호는 길이가 8자 이상이여야 하며, 특수문자나 대문자 중 한가지를 포함하여야 합니다.")
+        }
 
-        event.preventDefault();
+        event.preventDefault()
     
         const user = {
-            id: this.state.id,
+            email: this.state.id,
             pw: this.state.pw,
-            name: this.state.name
-        };
-    
-        console.log(user)
-    
+            name: this.state.name,
+        }
+
+
         fetch('http://localhost:3001/api/join', {
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*'
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(user)
-        }).then((res) => {
-            console.log(res)
         })
     }
 
@@ -60,11 +62,21 @@ export default class Join extends React.Component {
                     <div className="user-box">
                         <input
                             type="text"
-                            name="id"
-                            onChange={this.handleChangeId}
+                            name="email"
+                            onChange={this.handleChangeID}
                             required
                         />
                         <label>아이디</label>
+                    </div>
+
+                    <div className="user-box">
+                        <input
+                            type="text"
+                            name="name"
+                            onChange={this.handleChangeName}
+                            required
+                        />
+                        <label>학번 및 이름</label>
                     </div>
 
                     <div className="user-box">
@@ -85,16 +97,6 @@ export default class Join extends React.Component {
                             required
                           />
                         <label>비밀번호 확인</label>
-                    </div>
-
-                    <div className="user-box">
-                        <input
-                            type="text"
-                            name="name"
-                            onChange={this.handleChangeName}
-                            required
-                        />
-                        <label>닉네임</label>
                     </div>
 
                     <button type="submit" className="button">
