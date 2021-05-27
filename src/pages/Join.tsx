@@ -30,7 +30,7 @@ export default class Join extends React.Component {
         if(!(this.state.pwcheck === this.state.pw)){
             return alert("비밀번호가 일치하지 않습니다.")
         }
-        if((passwordStrength(`${this.state.pw}`).value !== 'Medium') || (passwordStrength(`${this.state.pw}`).value !== 'Strong')){
+        if(passwordStrength(`${this.state.pw}`).value === 'Weak' || 'Too Weak'){
             return alert("비밀번호는 길이가 8자 이상이여야 하며, 특수문자나 대문자 중 한가지를 포함하여야 합니다.")
         }
 
@@ -62,7 +62,7 @@ export default class Join extends React.Component {
                     <div className="user-box">
                         <input
                             type="text"
-                            name="email"
+                            name="id"
                             onChange={this.handleChangeID}
                             required
                         />
